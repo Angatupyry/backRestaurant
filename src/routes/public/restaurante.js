@@ -13,13 +13,22 @@
   *    HTTP/1.1 200 OK
   {
   "success": true,
-  "data": [],
+  "data": [
+    {
+      "id": 1,
+      "nombre": "La Camorra",
+      "descripcion": "La mejor pizza del Paraguay",
+      "hora_apertura": "19:00:00",
+      "hora_cierre": "23:00:00",
+      "horas_maxima_por_mesa": 2
+    }
+  ],
   "meta": {
-    "registrosPagina": 0,
-    "registrosFiltro": 0,
-    "registrosTabla": 0,
+    "registrosPagina": 1,
+    "registrosFiltro": 1,
+    "registrosTabla": 1,
     "paginaNumero": 1,
-    "paginasTotal": 0
+    "paginasTotal": 1
   }
 }
   * @apiErrorExample {json} List error

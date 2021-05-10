@@ -50,7 +50,7 @@
       "examples": [
         {
           "title": "Success",
-          "content": "   HTTP/1.1 200 OK\n  {\n  \"success\": true,\n  \"data\": [],\n  \"meta\": {\n    \"registrosPagina\": 0,\n    \"registrosFiltro\": 0,\n    \"registrosTabla\": 0,\n    \"paginaNumero\": 1,\n    \"paginasTotal\": 0\n  }\n}",
+          "content": "   HTTP/1.1 200 OK\n  {\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"nombre\": \"La Camorra\",\n      \"descripcion\": \"La mejor pizza del Paraguay\",\n      \"hora_apertura\": \"19:00:00\",\n      \"hora_cierre\": \"23:00:00\",\n      \"horas_maxima_por_mesa\": 2\n    }\n  ],\n  \"meta\": {\n    \"registrosPagina\": 1,\n    \"registrosFiltro\": 1,\n    \"registrosTabla\": 1,\n    \"paginaNumero\": 1,\n    \"paginasTotal\": 1\n  }\n}",
           "type": "json"
         }
       ]
