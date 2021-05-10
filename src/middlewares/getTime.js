@@ -1,3 +1,5 @@
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-param-reassign */
 const { getTime } = require('../queries');
 
 module.exports = (req, res, next) => {
