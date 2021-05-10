@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const rutas = require('./src/routes');
 
 const app = express();
@@ -30,6 +31,7 @@ function xPoweredBy(req, res, next) {
 app.set('x-powered-by', false);
 app.use(xPoweredBy);
 
+app.use('/public', express.static(path.join(__dirname, 'src/public')));
 app.use('/v1', rutas);
 
 app.use((req, res, next) => {
