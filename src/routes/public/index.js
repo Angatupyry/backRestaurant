@@ -1,7 +1,3 @@
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable operator-linebreak */
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable global-require */
 const router = require('express').Router();
 const fs = require('fs');
 const path = require('path');

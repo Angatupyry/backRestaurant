@@ -1,7 +1,5 @@
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable operator-linebreak */
-/* eslint-disable import/no-dynamic-require */
-/* eslint-disable global-require */
+'use strict';
+
 const fs = require('fs');
 const path = require('path');
 
