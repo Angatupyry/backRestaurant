@@ -1,6 +1,6 @@
 /**
   * @api {get} /public/restaurante/ Restaurante
-  * @apiGroup Persona
+  * @apiGroup Restaurante
   * @apiDescription Obtiene los restaurantes de la base de datos
   * @apiParam {Number} [cantidad] Cantidad de elementos por pagina, el minimo es 10.
   * @apiParam {Number} [pagina] Pagina actual que se va a mostrar.
