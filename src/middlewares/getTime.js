@@ -2,10 +2,11 @@
 /* eslint-disable no-param-reassign */
 const { getTime } = require('../queries');
 
-module.exports = async (req, res, next) => {
-  try {
-    return res.status(200).json('Hola');
-  } catch (error) {
-    return next(error);
-  }
+module.exports = (req, res, next) => {
+  getTime()
+    .then((result) => {
+      result = result[0];
+      res.json(result);
+    })
+    .catch(next);
 };
