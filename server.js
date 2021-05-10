@@ -6,7 +6,7 @@ console.time('Arrancamos el server en');
 const server = http.createServer(app).listen(params.port, params.host, () => {
   const { port } = server.address();
   const host = server.address().address;
-  console.log(`Facturadores Core - API en http://${host}:${port}`);
+  console.log(`Restauranpp Core - API en http://${host}:${port}`);
   console.timeEnd('Arrancamos el server en');
 });
 
