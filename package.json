@@ -1,5 +1,5 @@
 {
-  "name": "restaurappnte",
+  "name": "Restaurante",
   "version": "1.0.0",
   "description": "Backend del proyecto de Arquitectura Web",
   "main": "server.js",
@@ -47,7 +47,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "doc": "apidoc -i src/routes/ -o src/public/documentacion"
   },
   "repository": {
     "type": "git",
