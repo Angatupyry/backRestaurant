@@ -8,9 +8,8 @@ module.exports = {
     ecmaVersion: 2016,
   },
   rules: {
-    camelcase: 0,
     indent: ['error', 2, { SwitchCase: 1 }],
-    'object-curly-newline': 'off',
+    camelcase: 0,
     'import/no-commonjs': 'off',
     'no-console': 'off',
     'no-plusplus': 'off',
