@@ -1,8 +1,9 @@
 /* eslint-disable no-await-in-loop */
 const BinaryParser = require('binary-buffer-parser');
-const { comentario, restaurante, restaurante_imagen } = require('../models');
+const { comentario, restaurante, restaurante_imagen, usuario, mesa } = require('../models');
 
 function base64_encode(bitmap) {
+  // eslint-disable-next-line no-buffer-constructor
   return new Buffer(bitmap).toString('base64');
 }
 
@@ -72,6 +73,42 @@ const getList = async (req, res, next) => {
   }
 };
 
+const getListDetails = async (req, res, next) => {
+  try {
+    const restaurant = await restaurante.findAll({
+      where: { id: req.params.id },
+      include: [
+        {
+          model: mesa,
+          as: 'mesa',
+          attributes: { exclude: ['restaurante_id'] },
+        },
+        {
+          model: comentario,
+          as: 'comentario',
+          attributes: { exclude: ['usuario_id', 'restaurante_id'] },
+          include: [
+            {
+              model: usuario,
+              attributes: { exclude: ['password'] },
+              as: 'usuario',
+            },
+          ],
+        },
+      ],
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: 'Éxito',
+      data: restaurant,
+    });
+  } catch (error) {
+    return next(error);
+  }
+};
+
 module.exports = {
   getList,
+  getListDetails,
 };

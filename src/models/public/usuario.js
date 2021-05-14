@@ -29,6 +29,14 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: true,
         defaultValue: true,
       },
+      nombre: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      apellido: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     {
       sequelize,

@@ -31,10 +31,12 @@
   */
 const router = require('express').Router();
 const { restaurante } = require('../../models');
-const { getList } = require('../../controllers/restaurante.controllers');
+const { getList, getListDetails } = require('../../controllers/restaurante.controllers');
 const { crud } = require('../crud');
 
 router.get('/', getList);
+
+router.get('/:id', getListDetails);
 
 router.use('/', crud({ modelo: restaurante, configList: { columnas: ['nombre'] } }));
 
