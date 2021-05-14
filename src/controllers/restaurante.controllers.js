@@ -31,6 +31,7 @@ const getList = async (req, res, next) => {
       data.push({
         id: restaurant[i].id,
         nombre: restaurant[i].nombre,
+        descripcion: restaurant[i].descripcion,
         promedioPuntacion: await promedioPuntuacion(restaurant[i].id),
       });
     }
