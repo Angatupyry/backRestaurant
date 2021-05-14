@@ -142,7 +142,7 @@ define({ "api": [
   {
     "type": "get",
     "url": "/public/restaurante/:id",
-    "title": "Restaurante",
+    "title": "Detalle",
     "group": "Restaurante",
     "description": "<p>Obtiene los restaurantes de la base de datos</p>",
     "parameter": {

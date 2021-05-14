@@ -31,7 +31,7 @@
   */
 
 /**
-  * @api {get} /public/restaurante/:id Restaurante
+  * @api {get} /public/restaurante/:id Detalle
   * @apiGroup Restaurante
   * @apiDescription Obtiene los restaurantes de la base de datos
   * @apiParam {Number} [id] Identificador del restaurante.
