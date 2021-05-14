@@ -11,32 +11,31 @@
   * @apiParam {STRING} [columna] Parametro que define que columna es objetivo del filtro.
   * @apiSuccessExample {json} Success
   *    HTTP/1.1 200 OK
-  {
+{
   "success": true,
   "data": [
     {
       "id": 1,
       "nombre": "La Camorra",
-      "descripcion": "La mejor pizza del Paraguay",
-      "hora_apertura": "19:00:00",
-      "hora_cierre": "23:00:00",
-      "horas_maxima_por_mesa": 2
+      "promedioPuntacion": 3.75
+    },
+    {
+      "id": 2,
+      "nombre": "Bear",
+      "promedioPuntacion": null
     }
-  ],
-  "meta": {
-    "registrosPagina": 1,
-    "registrosFiltro": 1,
-    "registrosTabla": 1,
-    "paginaNumero": 1,
-    "paginasTotal": 1
-  }
+  ]
 }
   * @apiErrorExample {json} List error
   *    HTTP/1.1 500
   */
+const router = require('express').Router();
 const { restaurante } = require('../../models');
+const { getList } = require('../../controllers/restaurante.controllers');
 const { crud } = require('../crud');
 
-module.exports = {
-  crud: crud({ modelo: restaurante, configList: { columnas: ['nombre'] } }),
-};
+router.get('/', getList);
+
+router.use('/', crud({ modelo: restaurante, configList: { columnas: ['nombre'] } }));
+
+module.exports.crud = router;
