@@ -11,7 +11,7 @@
   * @apiParam {STRING} [columna] Parametro que define que columna es objetivo del filtro.
   * @apiSuccessExample {json} Success
   *    HTTP/1.1 200 OK
-{
+ {
   "success": true,
   "data": [
     {
@@ -25,7 +25,7 @@
       "promedioPuntacion": null
     }
   ]
-}
+ }
   * @apiErrorExample {json} List error
   *    HTTP/1.1 500
   */
