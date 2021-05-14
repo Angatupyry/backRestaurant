@@ -1,5 +1,30 @@
 /* eslint-disable no-await-in-loop */
-const { comentario, restaurante } = require('../models');
+const BinaryParser = require('binary-buffer-parser');
+const { comentario, restaurante, restaurante_imagen } = require('../models');
+
+function base64_encode(bitmap) {
+  return new Buffer(bitmap).toString('base64');
+}
+
+const getImagen = async (restaurante_id) => {
+  try {
+    const imagen = await restaurante_imagen.findAll({
+      where: {
+        restaurante_id,
+        menu: false,
+      },
+      raw: true,
+    });
+    if (!imagen.length) return null;
+
+    const bufferParser = new BinaryParser(imagen[0].imagen).int64();
+    const algo = base64_encode(bufferParser);
+
+    return algo;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
 const promedioPuntuacion = async (restaurante_id) => {
   try {
@@ -32,6 +57,7 @@ const getList = async (req, res, next) => {
         id: restaurant[i].id,
         nombre: restaurant[i].nombre,
         descripcion: restaurant[i].descripcion,
+        imagen: await getImagen(restaurant[i].id),
         promedioPuntacion: await promedioPuntuacion(restaurant[i].id),
       });
     }
