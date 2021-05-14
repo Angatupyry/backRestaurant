@@ -120,7 +120,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Success",
-          "content": "   HTTP/1.1 200 OK\n  {\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"nombre\": \"La Camorra\",\n      \"descripcion\": \"La mejor pizza del Paraguay\",\n      \"hora_apertura\": \"19:00:00\",\n      \"hora_cierre\": \"23:00:00\",\n      \"horas_maxima_por_mesa\": 2\n    }\n  ],\n  \"meta\": {\n    \"registrosPagina\": 1,\n    \"registrosFiltro\": 1,\n    \"registrosTabla\": 1,\n    \"paginaNumero\": 1,\n    \"paginasTotal\": 1\n  }\n}",
+          "content": "   HTTP/1.1 200 OK\n{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 1,\n      \"nombre\": \"La Camorra\",\n      \"promedioPuntacion\": 3.75\n    },\n    {\n      \"id\": 2,\n      \"nombre\": \"Bear\",\n      \"promedioPuntacion\": null\n    }\n  ]\n}",
           "type": "json"
         }
       ]
