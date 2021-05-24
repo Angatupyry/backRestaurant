@@ -215,5 +215,145 @@
     "filename": "src/routes/public/restaurante.js",
     "groupTitle": "Restaurante",
     "name": "GetPublicRestauranteId"
+  },
+  {
+    "type": "get",
+    "url": "/public/usuario/",
+    "title": "Usuario",
+    "group": "Usuario",
+    "description": "<p>Obtiene los Usuarios de la base de datos</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "cantidad",
+            "description": "<p>Cantidad de elementos por pagina, el minimo es 10.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "pagina",
+            "description": "<p>Pagina actual que se va a mostrar.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "STRING",
+            "optional": true,
+            "field": "orden",
+            "description": "<p>Puede ser ASC || DESC, se combina con el parametro columna para saber por que columna ordenar.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "STRING",
+            "optional": true,
+            "field": "filtro",
+            "description": "<p>Busca una coincidencia,s e combina con el parametro columna para saber por cual columna filtrar.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "STRING",
+            "optional": true,
+            "field": "columna",
+            "description": "<p>Parametro que define que columna es objetivo del filtro.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "   HTTP/1.1 200 OK\n{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": 4,\n      \"username\": \"acem012\",\n      \"password\": \"$2b$10$xwRosnlcFDc1QjAWobNa1Odf4h0kxJfYIeWGQCgOeutbjay.Ps7wG\",\n      \"email\": \"acem@gmail.com\",\n      \"telefono\": null,\n      \"activo\": true,\n      \"nombre\": \"Adriana\",\n      \"apellido\": \"Estigarribia\"\n    }\n  ],\n  \"meta\": {\n    \"registrosPagina\": 1,\n    \"registrosFiltro\": 1,\n    \"registrosTabla\": 1,\n    \"paginaNumero\": 1,\n    \"paginasTotal\": 1\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "List error",
+          "content": "HTTP/1.1 500",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/routes/public/usuario.js",
+    "groupTitle": "Usuario",
+    "name": "GetPublicUsuario"
+  },
+  {
+    "type": "post",
+    "url": "/public/usuario/",
+    "title": "Usuario",
+    "group": "Usuario",
+    "description": "<p>Crea un usuario</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "cantidad",
+            "description": "<p>Cantidad de elementos por pagina, el minimo es 10.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "pagina",
+            "description": "<p>Pagina actual que se va a mostrar.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "STRING",
+            "optional": true,
+            "field": "orden",
+            "description": "<p>Puede ser ASC || DESC, se combina con el parametro columna para saber por que columna ordenar.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "STRING",
+            "optional": true,
+            "field": "filtro",
+            "description": "<p>Busca una coincidencia,s e combina con el parametro columna para saber por cual columna filtrar.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "STRING",
+            "optional": true,
+            "field": "columna",
+            "description": "<p>Parametro que define que columna es objetivo del filtro.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "HTTP/1.1 200 OK",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "List error",
+          "content": "HTTP/1.1 500",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/routes/public/usuario.js",
+    "groupTitle": "Usuario",
+    "name": "PostPublicUsuario"
   }
 ]
