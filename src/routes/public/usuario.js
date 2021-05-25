@@ -1,5 +1,5 @@
 /**
-  * @api {get} /public/usuario/ Usuario
+  * @api {get} /public/usuario/ Registro
   * @apiGroup Usuario
   * @apiDescription Obtiene los Usuarios de la base de datos
   * @apiParam {Number} [cantidad] Cantidad de elementos por pagina, el minimo es 10.
@@ -9,6 +9,15 @@
   * @apiParam {STRING} [filtro] Busca una coincidencia,s e combina con el parametro
   * columna para saber por cual columna filtrar.
   * @apiParam {STRING} [columna] Parametro que define que columna es objetivo del filtro.
+  * * @apiParamExample {json} Input
+ {
+    "username": "crolon",
+    "password": 1,
+    "nombre": "César",
+    "apellido": "Rolón",
+    "telefono": "5136186"
+    "email": "crolon@me.com.py"
+}
   * @apiSuccessExample {json} Success
   *    HTTP/1.1 200 OK
 {

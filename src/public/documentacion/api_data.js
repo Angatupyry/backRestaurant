@@ -219,7 +219,7 @@ define({ "api": [
   {
     "type": "get",
     "url": "/public/usuario/",
-    "title": "Usuario",
+    "title": "Registro",
     "group": "Usuario",
     "description": "<p>Obtiene los Usuarios de la base de datos</p>",
     "parameter": {
@@ -261,7 +261,14 @@ define({ "api": [
             "description": "<p>Parametro que define que columna es objetivo del filtro.</p>"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "title": "Input",
+          "content": " {\n    \"username\": \"crolon\",\n    \"password\": 1,\n    \"nombre\": \"César\",\n    \"apellido\": \"Rolón\",\n    \"telefono\": \"5136186\"\n    \"email\": \"crolon@me.com.py\"\n}",
+          "type": "json"
+        }
+      ]
     },
     "success": {
       "examples": [
