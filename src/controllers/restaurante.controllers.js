@@ -108,7 +108,36 @@ const getListDetails = async (req, res, next) => {
   }
 };
 
+const updateTables = async (restautante_id) => {
+  try {
+    const getUnavailableTables = await mesa.findAll({
+      where: { restautante_id, disponible: false },
+    });
+
+    //Recorrer array y preguntar si ya está disponible. Si lo está, setear estado.
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+const getTables = async (req, res, next) => {
+  try {
+    const { restaurante_id } = req.params;
+
+    await updateTables(restaurante_id);
+
+    const tables = await mesa.findAll({
+      where: { restaurante_id },
+    });
+
+    return res.status(200).json({ success: true, message: 'Listado de mesas.', data: tables });
+  } catch (error) {
+    return next(error);
+  }
+};
+
 module.exports = {
   getList,
   getListDetails,
+  getTables,
 };
