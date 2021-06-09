@@ -1,6 +1,14 @@
 /* eslint-disable no-await-in-loop */
 const BinaryParser = require('binary-buffer-parser');
-const { comentario, restaurante, restaurante_imagen, usuario, mesa } = require('../models');
+const moment = require('moment');
+const {
+  comentario,
+  restaurante,
+  restaurante_imagen,
+  usuario,
+  mesa,
+  reserva,
+} = require('../models');
 
 function base64_encode(bitmap) {
   // eslint-disable-next-line no-buffer-constructor
@@ -108,13 +116,32 @@ const getListDetails = async (req, res, next) => {
   }
 };
 
-const updateTables = async (restautante_id) => {
+const updateTables = async (restaurante_id) => {
   try {
-    const getUnavailableTables = await mesa.findAll({
-      where: { restautante_id, disponible: false },
+    const promises = [];
+    const getReservation = await reserva.findAll({
+      where: { restaurante_id },
     });
 
-    //Recorrer array y preguntar si ya está disponible. Si lo está, setear estado.
+    const tablesForUpdate = [];
+
+    getReservation.forEach((r) => {
+      if (r.fecha_hasta < Date.now()) tablesForUpdate.push(r.mesa_id);
+    });
+
+    tablesForUpdate.forEach((x) => {
+      promises.push(
+        mesa.update(
+          { disponible: true },
+          {
+            where: { id: x },
+            returning: true,
+          }
+        )
+      );
+    });
+
+    await Promise.all(promises);
   } catch (error) {
     throw new Error(error);
   }
