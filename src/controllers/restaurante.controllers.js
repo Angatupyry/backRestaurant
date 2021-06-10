@@ -1,4 +1,7 @@
 /* eslint-disable no-await-in-loop */
+const Sequelize = require('sequelize');
+
+const Op = Sequelize.Op;
 const BinaryParser = require('binary-buffer-parser');
 const moment = require('moment');
 const {
@@ -59,7 +62,23 @@ const promedioPuntuacion = async (restaurante_id) => {
 const getList = async (req, res, next) => {
   try {
     const data = [];
-    const restaurant = await restaurante.findAll();
+
+    const { nombre } = req.query;
+
+    let restaurant;
+    if (nombre) {
+      restaurant = await restaurante.findAll({
+        where: {
+          nombre: {
+            [Op.like]: `%${nombre}%`,
+          },
+        },
+      });
+    } else {
+      restaurant = await restaurante.findAll();
+    }
+
+    // let articles = await restaurante.findAll({ tag: nombre }).exec();
 
     for (let i = 0; i < restaurant.length; i++) {
       data.push({
