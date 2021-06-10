@@ -163,8 +163,32 @@ const getTables = async (req, res, next) => {
   }
 };
 
+const getReservations = async (req, res, next) => {
+  try {
+    const { restaurante_id } = req.params;
+
+    const reservations = await reserva.findAll({
+      where: { restaurante_id },
+    });
+
+    reservations.forEach((r) => {
+      const fechaDesdeTz = moment.tz(r.fecha_desde, 'America/Asuncion');
+      const fechaHastaTz = moment.tz(r.fecha_hasta, 'America/Asuncion');
+      r.fecha_desde = fechaDesdeTz._d;
+      r.fecha_hasta = fechaHastaTz._d;
+    });
+
+    return res
+      .status(200)
+      .json({ success: true, message: 'Listado de reservas.', data: reservations });
+  } catch (error) {
+    return next(error);
+  }
+};
+
 module.exports = {
   getList,
   getListDetails,
   getTables,
+  getReservations,
 };
