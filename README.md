@@ -24,7 +24,7 @@ MIN_PAGE_SIZE=10
 npm install
 ```
 
-Correr el
+Correr el programa
 
 ```
 npm run dev
