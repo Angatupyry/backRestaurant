@@ -41,11 +41,17 @@
   * @apiErrorExample {json} List error
   *    HTTP/1.1 500
   */
+const router = require('express').Router();
 const { comentario, usuario, restaurante } = require('../../models');
 const { crud } = require('../crud');
+const { saveComment } = require('../../controllers/comentario.controller');
+const mwToken = require('../../middlewares/mwToken');
 
-module.exports = {
-  crud: crud({
+router.post('/', mwToken, saveComment);
+
+router.use(
+  '/',
+  crud({
     modelo: comentario,
     configList: { columnas: ['id', 'mensaje', 'puntuacion'] },
     options: {
@@ -65,5 +71,6 @@ module.exports = {
         },
       ],
     },
-  }),
-};
+  })
+);
+module.exports.crud = router;

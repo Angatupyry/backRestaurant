@@ -49,7 +49,9 @@ const { reserva, usuario, restaurante, mesa } = require('../../models');
 const { crud } = require('../crud');
 const { saveReservation } = require('../../controllers/reserva.controllers');
 
-router.post('/', saveReservation);
+const mwToken = require('../../middlewares/mwToken');
+
+router.post('/', mwToken, saveReservation);
 
 router.use(
   '/',
