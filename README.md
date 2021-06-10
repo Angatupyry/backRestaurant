@@ -17,3 +17,15 @@ MAX_PAGE_SIZE=100
 MIN_PAGE_SIZE=10
 
 ```
+
+# Siga los siguientes pasos:
+
+```
+npm install
+```
+
+Correr el
+
+```
+npm run dev
+```
