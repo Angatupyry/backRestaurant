@@ -259,7 +259,7 @@ const crud = ({
   };
 
   // Configuracion del router
-  // if (mw) router.use(mwToken);
+  if (mw) router.use(mwToken);
 
   router.get('/', getList);
 
