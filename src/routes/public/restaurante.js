@@ -200,7 +200,12 @@
   */
 const router = require('express').Router();
 const { restaurante } = require('../../models');
-const { getList, getListDetails, getTables } = require('../../controllers/restaurante.controllers');
+const {
+  getList,
+  getListDetails,
+  getTables,
+  getReservation,
+} = require('../../controllers/restaurante.controllers');
 const { crud } = require('../crud');
 
 router.get('/', getList);
@@ -208,6 +213,8 @@ router.get('/', getList);
 router.get('/:id', getListDetails);
 
 router.get('/mesas/:restaurante_id', getTables);
+
+router.get('/reservas/:restaurante_id', getReservation);
 
 router.use('/', crud({ modelo: restaurante, configList: { columnas: ['nombre'] } }));
 

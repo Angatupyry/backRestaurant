@@ -163,8 +163,23 @@ const getTables = async (req, res, next) => {
   }
 };
 
+const getReservation = async (req, res, next) => {
+  try {
+    const { restaurante_id } = req.params;
+
+    const reservation = await reserva.findAll({
+      where: { restaurante_id },
+    });
+
+    return res.status(200).json({ success: true, message: 'Listado de mesas.', data: reservation });
+  } catch (error) {
+    return next(error);
+  }
+};
+
 module.exports = {
   getList,
+  getReservation,
   getListDetails,
   getTables,
 };
