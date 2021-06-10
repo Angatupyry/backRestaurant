@@ -8,10 +8,10 @@ const controlReservation = async (restaurante_id, mesa_id, fecha_desde, fecha_ha
       where: { id: restaurante_id },
     });
 
-    const galleta = moment(fecha_hasta);
-    const coquito = moment(fecha_desde);
+    const fechaHasta = moment(fecha_hasta);
+    const fechaDesde = moment(fecha_desde);
 
-    const horasDeseadas = galleta.diff(coquito) / (1000 * 60 * 60);
+    const horasDeseadas = fechaHasta.diff(fechaDesde) / (1000 * 60 * 60);
 
     const sobrepasaHoraMaxima = horasDeseadas > restaurant.horas_maxima_por_mesa;
 
