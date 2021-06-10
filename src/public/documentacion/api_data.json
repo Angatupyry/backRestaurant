@@ -294,6 +294,83 @@
     "name": "GetPublicRestauranteMesasRestaurante_id"
   },
   {
+    "type": "post",
+    "url": "/public/reserva/",
+    "title": "Reserva",
+    "group": "Restaurante",
+    "description": "<p>Almacena una reserva</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "cantidad",
+            "description": "<p>Cantidad de elementos por pagina, el minimo es 10.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "pagina",
+            "description": "<p>Pagina actual que se va a mostrar.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "STRING",
+            "optional": true,
+            "field": "orden",
+            "description": "<p>Puede ser ASC || DESC, se combina con el parametro columna para saber por que columna ordenar.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "STRING",
+            "optional": true,
+            "field": "filtro",
+            "description": "<p>Busca una coincidencia,s e combina con el parametro columna para saber por cual columna filtrar.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "STRING",
+            "optional": true,
+            "field": "columna",
+            "description": "<p>Parametro que define que columna es objetivo del filtro.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Input",
+          "content": "  {\n\t\"restaurante_id\": 1,\n\t\"mesa_id\": 4,\n\t\"usuario_id\": 4,\n  \"fecha_desde\": \"2021-06-05 20:00:00\",\n\t\"fecha_hasta\": \"2021-06-05 22:40:00\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success",
+          "content": "   HTTP/1.1 200 OK\n{\n  \"success\": true,\n  \"data\": {\n    \"id\": 7,\n    \"fecha_desde\": \"2021-06-06T00:00:00.000Z\",\n    \"fecha_hasta\": \"2021-06-06T02:40:00.000Z\",\n    \"usuario\": {\n      \"id\": 4,\n      \"username\": \"acem012\",\n      \"email\": \"acem@gmail.com\"\n    },\n    \"restaurante\": {\n      \"id\": 1,\n      \"nombre\": \"La Camorra\",\n      \"descripcion\": \"La mejor \"\n    },\n    \"mesa\": {\n      \"id\": 4,\n      \"numero\": 4\n    }\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "List error",
+          "content": "HTTP/1.1 500",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "src/routes/public/reserva.js",
+    "groupTitle": "Restaurante",
+    "name": "PostPublicReserva"
+  },
+  {
     "type": "get",
     "url": "/public/usuario/",
     "title": "Registro",
