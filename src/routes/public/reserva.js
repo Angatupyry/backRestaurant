@@ -44,12 +44,16 @@
   * @apiErrorExample {json} List error
   *    HTTP/1.1 500
   */
-
+const router = require('express').Router();
 const { reserva, usuario, restaurante, mesa } = require('../../models');
 const { crud } = require('../crud');
+const { saveReservation } = require('../../controllers/reserva.controllers');
 
-module.exports = {
-  crud: crud({
+router.post('/', saveReservation);
+
+router.use(
+  '/',
+  crud({
     modelo: reserva,
     configList: { columnas: ['id', 'fecha_desde', 'fecha_hasta'] },
     options: {
@@ -74,5 +78,7 @@ module.exports = {
         },
       ],
     },
-  }),
-};
+  })
+);
+
+module.exports.crud = router;
